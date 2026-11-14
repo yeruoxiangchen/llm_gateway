@@ -1,0 +1,3 @@
+asciinema==2.4.0
+pyte==0.8.2
+Pillow==10.4.0

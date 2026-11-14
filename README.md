@@ -4,6 +4,14 @@
 
 源码位于 `internship_project_lab/llm_gateway`，数据库、依赖、构建缓存和测试产物位于 `/data/zjr/llm_gateway`。服务使用独立端口、数据库、密码和 `llmgw-*` 用户服务。
 
+## 演示视频
+
+[![真实 API 演示封面](docs/media/llm-gateway-demo.jpg)](https://github.com/yeruoxiangchen/llm_gateway/raw/refs/heads/main/docs/media/llm-gateway-demo.mp4)
+
+[观看 / 下载 MP4](https://github.com/yeruoxiangchen/llm_gateway/raw/refs/heads/main/docs/media/llm-gateway-demo.mp4)：约 70 秒，1920×1080，中文说明，无旁白。录制于 2026-11-14，真实调用本机 Qwen3-VL-8B；普通响应、SSE、幂等、额度和 Key 撤销五步全部通过。本轮消耗 117 Token，重放增量为 0。
+
+视频使用实际终端事件与原始输出时间，结尾停留 12 秒展示结果。可下载 [原始 asciinema 记录](docs/media/llm-gateway-demo.cast)，或查看 [章节与编码信息](docs/media/llm-gateway-demo.json)。重新录制的方法见 [录制说明](docs/recording.md)。
+
 ## 成熟组件如何复用
 
 | 工作 / 组件 | 本项目的使用方式 |
