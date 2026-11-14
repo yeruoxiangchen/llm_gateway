@@ -1,0 +1,508 @@
+{
+  "as_of": "2026-11-14",
+  "model": "Qwen3-VL-8B-Instruct",
+  "deployment": {
+    "max_num_seqs": 1,
+    "max_model_len": 12288
+  },
+  "scope": "Local development evaluation; fixed subsets and recorded deployment, with raw evidence retained on the development server.",
+  "checks": {
+    "go_race": {
+      "passed_including_subtests": 49,
+      "skipped": 0
+    },
+    "http_acceptance": {
+      "passed": 21
+    },
+    "tool_parser_and_grader_controls": {
+      "passed": 4
+    }
+  },
+  "formal_real_model_calls": 1382,
+  "qa": {
+    "samples_per_dataset": 100,
+    "seed": 20261114,
+    "planned_calls": 600,
+    "scores": {
+      "gsm8k": {
+        "direct": {
+          "correct": 94,
+          "total": 100,
+          "accuracy_pct": 94.0,
+          "completed": 100,
+          "errors": 0,
+          "format_failures": 1,
+          "truncated": 1
+        },
+        "gateway_json": {
+          "correct": 94,
+          "total": 100,
+          "accuracy_pct": 94.0,
+          "completed": 100,
+          "errors": 0,
+          "format_failures": 1,
+          "truncated": 1
+        },
+        "gateway_sse": {
+          "correct": 94,
+          "total": 100,
+          "accuracy_pct": 94.0,
+          "completed": 100,
+          "errors": 0,
+          "format_failures": 1,
+          "truncated": 1
+        }
+      },
+      "boolq": {
+        "direct": {
+          "correct": 86,
+          "total": 100,
+          "accuracy_pct": 86.0,
+          "completed": 100,
+          "errors": 0,
+          "format_failures": 0,
+          "truncated": 0
+        },
+        "gateway_json": {
+          "correct": 86,
+          "total": 100,
+          "accuracy_pct": 86.0,
+          "completed": 100,
+          "errors": 0,
+          "format_failures": 0,
+          "truncated": 0
+        },
+        "gateway_sse": {
+          "correct": 86,
+          "total": 100,
+          "accuracy_pct": 86.0,
+          "completed": 100,
+          "errors": 0,
+          "format_failures": 0,
+          "truncated": 0
+        }
+      }
+    },
+    "comparisons": {
+      "gateway_json": {
+        "total": 200,
+        "answer_agreement": 199,
+        "exact_text_agreement": 181,
+        "different_items": [
+          "gsm8k-931"
+        ]
+      },
+      "gateway_sse": {
+        "total": 200,
+        "answer_agreement": 198,
+        "exact_text_agreement": 183,
+        "different_items": [
+          "gsm8k-931",
+          "gsm8k-984"
+        ]
+      }
+    },
+    "checks": {
+      "all_calls_completed": true,
+      "all_gateway_receipts_match": true,
+      "account_matches_ledger": true,
+      "no_reservations": true,
+      "used_equals_gateway_response_usage": true
+    }
+  },
+  "bfcl": {
+    "samples": 50,
+    "planned_calls": 150,
+    "commit": "6ea57973c7a6097fd7c5915698c54c17c5b1b6c8",
+    "categories": {
+      "simple_python": 20,
+      "multiple": 20,
+      "parallel": 10
+    },
+    "tool_choice": "required",
+    "scope": "Local subset; tool selection and argument generation scored with the official AST checker.",
+    "scores": {
+      "direct": {
+        "completed": 50,
+        "planned": 50,
+        "correct": 46,
+        "accuracy_pct": 92.0,
+        "errors": 0,
+        "format_failures": 0,
+        "truncated": 0
+      },
+      "gateway_json": {
+        "completed": 50,
+        "planned": 50,
+        "correct": 46,
+        "accuracy_pct": 92.0,
+        "errors": 0,
+        "format_failures": 0,
+        "truncated": 0
+      },
+      "gateway_sse": {
+        "completed": 50,
+        "planned": 50,
+        "correct": 46,
+        "accuracy_pct": 92.0,
+        "errors": 0,
+        "format_failures": 0,
+        "truncated": 0
+      }
+    },
+    "comparisons": {
+      "gateway_json": {
+        "total": 50,
+        "same_calls": 50,
+        "different_items": []
+      },
+      "gateway_sse": {
+        "total": 50,
+        "same_calls": 50,
+        "different_items": []
+      }
+    },
+    "checks": {
+      "all_calls_completed": true,
+      "receipts_match_usage": true,
+      "ledger_exact": true,
+      "no_reservations": true
+    }
+  },
+  "real_load": {
+    "formal_calls": 632,
+    "extra_warmup_calls": 10,
+    "generator": "Installed vLLM bench serve",
+    "source_dataset": "Official Google BoolQ passages converted to custom JSONL",
+    "cases": [
+      {
+        "name": "01-short-c1-direct",
+        "arm": "direct",
+        "workload": "short",
+        "concurrency": 1,
+        "planned_calls": 100,
+        "successful": 100,
+        "output_token_limit": 64,
+        "duration_s": 167.68986567668617,
+        "rps": 0.596338959402619,
+        "output_tokens_s": 29.035743933313523,
+        "p95_ttft_ms": 151.16485254839063,
+        "p95_e2el_ms": 2174.1626858711243,
+        "p99_e2el_ms": 2213.8220818713307,
+        "input_tokens_range": [
+          42,
+          383
+        ],
+        "state": "passed",
+        "checks": {
+          "all_completed": true,
+          "no_client_errors": true,
+          "nonempty_outputs": true
+        }
+      },
+      {
+        "name": "02-short-c1-gateway",
+        "arm": "gateway",
+        "workload": "short",
+        "concurrency": 1,
+        "planned_calls": 100,
+        "successful": 100,
+        "output_token_limit": 64,
+        "duration_s": 169.54374228976667,
+        "rps": 0.5898182890707362,
+        "output_tokens_s": 28.718252494854145,
+        "p95_ttft_ms": 212.67635794356465,
+        "p95_e2el_ms": 2145.2663615345955,
+        "p99_e2el_ms": 2181.6027567163114,
+        "input_tokens_range": [
+          42,
+          383
+        ],
+        "state": "passed",
+        "checks": {
+          "all_completed": true,
+          "no_client_errors": true,
+          "nonempty_outputs": true,
+          "request_count_exact": true,
+          "all_requests_settled": true,
+          "output_tokens_match": true,
+          "ledger_exact": true,
+          "no_reservations": true
+        }
+      },
+      {
+        "name": "03-short-c4-gateway",
+        "arm": "gateway",
+        "workload": "short",
+        "concurrency": 4,
+        "planned_calls": 100,
+        "successful": 100,
+        "output_token_limit": 64,
+        "duration_s": 158.26889665424824,
+        "rps": 0.6318360847517528,
+        "output_tokens_s": 30.77673568825788,
+        "p95_ttft_ms": 5573.326664231718,
+        "p95_e2el_ms": 7287.644871324301,
+        "p99_e2el_ms": 7592.7589028701195,
+        "input_tokens_range": [
+          42,
+          383
+        ],
+        "state": "passed",
+        "checks": {
+          "all_completed": true,
+          "no_client_errors": true,
+          "nonempty_outputs": true,
+          "request_count_exact": true,
+          "all_requests_settled": true,
+          "output_tokens_match": true,
+          "ledger_exact": true,
+          "no_reservations": true
+        }
+      },
+      {
+        "name": "04-short-c4-direct",
+        "arm": "direct",
+        "workload": "short",
+        "concurrency": 4,
+        "planned_calls": 100,
+        "successful": 100,
+        "output_token_limit": 64,
+        "duration_s": 164.88880468159914,
+        "rps": 0.6064693124139043,
+        "output_tokens_s": 29.528990821433002,
+        "p95_ttft_ms": 6023.692820034921,
+        "p95_e2el_ms": 7743.424844276159,
+        "p99_e2el_ms": 8172.537359967831,
+        "input_tokens_range": [
+          42,
+          383
+        ],
+        "state": "passed",
+        "checks": {
+          "all_completed": true,
+          "no_client_errors": true,
+          "nonempty_outputs": true
+        }
+      },
+      {
+        "name": "05-short-c8-direct",
+        "arm": "direct",
+        "workload": "short",
+        "concurrency": 8,
+        "planned_calls": 100,
+        "successful": 100,
+        "output_token_limit": 64,
+        "duration_s": 177.94538548402488,
+        "rps": 0.5619701782543698,
+        "output_tokens_s": 27.294891557814736,
+        "p95_ttft_ms": 14724.568180274218,
+        "p95_e2el_ms": 16543.283165059984,
+        "p99_e2el_ms": 16720.33250430599,
+        "input_tokens_range": [
+          42,
+          383
+        ],
+        "state": "passed",
+        "checks": {
+          "all_completed": true,
+          "no_client_errors": true,
+          "nonempty_outputs": true
+        }
+      },
+      {
+        "name": "06-short-c8-gateway",
+        "arm": "gateway",
+        "workload": "short",
+        "concurrency": 8,
+        "planned_calls": 100,
+        "successful": 100,
+        "output_token_limit": 64,
+        "duration_s": 157.28378868848085,
+        "rps": 0.6357934332193754,
+        "output_tokens_s": 30.956782263451387,
+        "p95_ttft_ms": 12149.20332012698,
+        "p95_e2el_ms": 13810.998964495957,
+        "p99_e2el_ms": 14476.452135965228,
+        "input_tokens_range": [
+          42,
+          383
+        ],
+        "state": "passed",
+        "checks": {
+          "all_completed": true,
+          "no_client_errors": true,
+          "nonempty_outputs": true,
+          "request_count_exact": true,
+          "all_requests_settled": true,
+          "output_tokens_match": true,
+          "ledger_exact": true,
+          "no_reservations": true
+        }
+      },
+      {
+        "name": "07-long-output-c1-direct",
+        "arm": "direct",
+        "workload": "long-output",
+        "concurrency": 1,
+        "planned_calls": 8,
+        "successful": 8,
+        "output_token_limit": 512,
+        "duration_s": 130.7970891073346,
+        "rps": 0.061163440674394866,
+        "output_tokens_s": 31.31568162529017,
+        "p95_ttft_ms": 129.32594381272793,
+        "p95_e2el_ms": 16485.749618522823,
+        "p99_e2el_ms": 16507.76644524187,
+        "input_tokens_range": [
+          84,
+          195
+        ],
+        "state": "passed",
+        "checks": {
+          "all_completed": true,
+          "no_client_errors": true,
+          "nonempty_outputs": true
+        }
+      },
+      {
+        "name": "08-long-output-c1-gateway",
+        "arm": "gateway",
+        "workload": "long-output",
+        "concurrency": 1,
+        "planned_calls": 8,
+        "successful": 8,
+        "output_token_limit": 512,
+        "duration_s": 132.59528216719627,
+        "rps": 0.06033397168620513,
+        "output_tokens_s": 30.890993503337025,
+        "p95_ttft_ms": 283.38989643380035,
+        "p95_e2el_ms": 16691.291935369372,
+        "p99_e2el_ms": 16704.50320236385,
+        "input_tokens_range": [
+          84,
+          195
+        ],
+        "state": "passed",
+        "checks": {
+          "all_completed": true,
+          "no_client_errors": true,
+          "nonempty_outputs": true,
+          "request_count_exact": true,
+          "all_requests_settled": true,
+          "output_tokens_match": true,
+          "ledger_exact": true,
+          "no_reservations": true
+        }
+      },
+      {
+        "name": "09-long-input-c1-direct",
+        "arm": "direct",
+        "workload": "long-input",
+        "concurrency": 1,
+        "planned_calls": 8,
+        "successful": 8,
+        "output_token_limit": 128,
+        "duration_s": 50.38344839029014,
+        "rps": 0.15878230362536586,
+        "output_tokens_s": 20.32413486404683,
+        "p95_ttft_ms": 1822.8869371116161,
+        "p95_e2el_ms": 6827.284143213183,
+        "p99_e2el_ms": 6844.768685270101,
+        "input_tokens_range": [
+          6688,
+          6962
+        ],
+        "state": "passed",
+        "checks": {
+          "all_completed": true,
+          "no_client_errors": true,
+          "nonempty_outputs": true
+        }
+      },
+      {
+        "name": "10-long-input-c1-gateway",
+        "arm": "gateway",
+        "workload": "long-input",
+        "concurrency": 1,
+        "planned_calls": 8,
+        "successful": 8,
+        "output_token_limit": 128,
+        "duration_s": 48.31265356205404,
+        "rps": 0.1655880894582739,
+        "output_tokens_s": 21.19527545065906,
+        "p95_ttft_ms": 1907.7313950285316,
+        "p95_e2el_ms": 6427.158153243362,
+        "p99_e2el_ms": 6632.70463321358,
+        "input_tokens_range": [
+          6688,
+          6962
+        ],
+        "state": "passed",
+        "checks": {
+          "all_completed": true,
+          "no_client_errors": true,
+          "nonempty_outputs": true,
+          "request_count_exact": true,
+          "all_requests_settled": true,
+          "output_tokens_match": true,
+          "ledger_exact": true,
+          "no_reservations": true
+        }
+      }
+    ],
+    "provider_long_input_token_range": [
+      6696,
+      6970
+    ]
+  },
+  "accounting": {
+    "formal_gateway_calls": 816,
+    "formal_gateway_tokens": 237319,
+    "final_cohort_reservations": 0,
+    "all_account_and_ledger_checks_passed": true
+  },
+  "previous_gateway_build_fixture_soak": {
+    "http_requests": 18001,
+    "successful": 18001,
+    "failed": 0,
+    "dropped_iterations": 0,
+    "p95_ms": 148.290415,
+    "p99_ms": 350.497502
+  },
+  "issues": {
+    "response_header_timeout": {
+      "original_limit_seconds": 15,
+      "original_response": "HTTP 504 on gsm8k-931",
+      "fix": "Wait for response headers within the request context budget.",
+      "same_item_after_fix_seconds": {
+        "direct": 16.13,
+        "gateway_json": 16.171,
+        "gateway_sse": 16.328
+      }
+    },
+    "qa_generation_difference": {
+      "item": "gsm8k-984",
+      "original_predictions": {
+        "direct": 168,
+        "gateway_json": 168,
+        "gateway_sse": 162
+      },
+      "gold": 342,
+      "repeat_direct_and_gateway_predictions": 162,
+      "observed_upstream_parameters_content_and_usage_match": true
+    },
+    "retained_truncation": {
+      "item": "gsm8k-931",
+      "max_output_tokens": 512,
+      "count_per_arm": 1
+    }
+  },
+  "publication_demo": {
+    "steps_passed": 5,
+    "used_tokens": 117,
+    "account_and_receipts_match": true,
+    "temporary_credentials_cleaned": true,
+    "access": "HTTP API only"
+  }
+}

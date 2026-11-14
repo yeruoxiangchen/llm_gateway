@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+export LLMGW_DATA_ROOT="${LLMGW_DATA_ROOT:-/data/zjr/llm_gateway}"
+export TMPDIR="$LLMGW_DATA_ROOT/tmp"
+export TORCH_HOME="$LLMGW_DATA_ROOT/cache/torch"
+export HF_HOME="$LLMGW_DATA_ROOT/cache/huggingface"
+export HF_HUB_CACHE="$HF_HOME/hub"
+export TORCH_EXTENSIONS_DIR="$LLMGW_DATA_ROOT/cache/extensions"
+export MPLCONFIGDIR="$LLMGW_DATA_ROOT/cache/matplotlib"
+export GOCACHE="$LLMGW_DATA_ROOT/cache/go-build"
+export GOMODCACHE="$LLMGW_DATA_ROOT/cache/go-mod"
+export GOPATH="$LLMGW_DATA_ROOT/cache/gopath"
+export GOTOOLCHAIN=local
+export PATH="$LLMGW_DATA_ROOT/toolchain/go/bin:$PATH"
+export PYTHONDONTWRITEBYTECODE=1
+export NO_PROXY=127.0.0.1,localhost,::1
+export no_proxy="$NO_PROXY"
+export GOFLAGS="-p=4"
+export GOMEMLIMIT=1536MiB
+export GOMAXPROCS=4
+export LLMGW_SOURCE="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." && pwd)"
