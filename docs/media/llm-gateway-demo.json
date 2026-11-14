@@ -1,0 +1,54 @@
+{
+  "recording": "llm-gateway-demo.cast",
+  "video": "llm-gateway-demo.mp4",
+  "duration_seconds": 69.9,
+  "fps": 10,
+  "resolution": [
+    1920,
+    1080
+  ],
+  "audio": false,
+  "timing": "original asciinema output timestamps, followed by a final still hold",
+  "final_hold_seconds": 12,
+  "chapters": [
+    {
+      "at_seconds": 0.0,
+      "title": "项目与调用链"
+    },
+    {
+      "at_seconds": 10.227,
+      "title": "01 / 普通响应"
+    },
+    {
+      "at_seconds": 19.607,
+      "title": "02 / SSE 流式响应"
+    },
+    {
+      "at_seconds": 30.303,
+      "title": "03 / 幂等重放"
+    },
+    {
+      "at_seconds": 39.39,
+      "title": "04 / 额度控制"
+    },
+    {
+      "at_seconds": 48.639,
+      "title": "05 / Key 管理"
+    },
+    {
+      "at_seconds": 57.767,
+      "title": "本次运行结果"
+    }
+  ],
+  "video_bytes": 573613,
+  "validation": {
+    "steps_passed": 5,
+    "used_tokens": 117,
+    "idempotent_replay_added_tokens": 0,
+    "quota_rejection_http_status": 402,
+    "revoked_key_http_status": 401,
+    "account_and_receipts_match": true,
+    "temporary_credentials_cleaned": true,
+    "full_video_decode": "passed"
+  }
+}
