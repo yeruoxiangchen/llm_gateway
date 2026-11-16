@@ -1,6 +1,10 @@
 # LLM Gateway：大模型网关与用量管理
 
+[简历固定版本与最新版本](docs/versions.md)
+
 独立的 Go 后端项目。应用通过统一的 OpenAI Chat API 调用模型，网关负责 API Key、模型路由、限流、额度预占、用量结算、故障恢复和审计查询。本机演示复用已经运行的 Qwen3-VL-8B，不另起模型任务。
+
+2026-11-16，视频工作台的剪辑规划与字幕翻译已接入独立网关账户。原有剪辑和英文译制两条真实浏览器旅程均通过；本轮 11 次生成调用的应用回执、网关请求和账户用量均为 28,214 Token，残留预占为零。[视频工作台接入与验收](docs/video-studio.md)。
 
 源码位于 `internship_project_lab/llm_gateway`，数据库、依赖、构建缓存和测试产物位于 `/data/zjr/llm_gateway`。服务使用独立端口、数据库、密码和 `llmgw-*` 用户服务。
 
@@ -52,6 +56,11 @@ flowchart LR
 ```
 
 ## 本机使用
+
+2026-11-16：已接入“知页”企业多 Agent 在线应用，使用其现有 Qwen3-8B 与
+`business_native_v1` 流程，通过实际 HTTP 完成检索引用、工单草稿、本人确认、管理员处理与后续查询。
+应用、网关和账户的 Token 消耗核对一致。配置、使用和验证记录见
+[企业多 Agent 接入](docs/enterprise-agent.md)。
 
 当前服务器已有网关、数据库、Redis 和本机 Qwen。先检查状态，再运行一键演示：
 

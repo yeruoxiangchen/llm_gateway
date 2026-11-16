@@ -1,0 +1,25 @@
+{
+  "state": "passed",
+  "calls": 11,
+  "application_tokens": 28214,
+  "gateway_tokens": 28214,
+  "account_tokens": 28214,
+  "reserved_tokens": 0,
+  "request_ids_match": true,
+  "per_request_usage_matches": true,
+  "browser": {
+    "startTime": "2026-11-16T05:00:37.843Z",
+    "duration": 544699.288,
+    "expected": 2,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "scope": "Editing planning and subtitle translation via Go gateway; specialized media services remain separate",
+  "as_of": "2026-11-16",
+  "backend_unit_tests": 550,
+  "frontend_unit_tests": 37,
+  "ruff": "passed",
+  "mypy": "passed",
+  "runtime_code_matches": true
+}

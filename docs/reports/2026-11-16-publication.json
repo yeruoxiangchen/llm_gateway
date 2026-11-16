@@ -1,0 +1,12 @@
+{
+  "as_of": "2026-11-16",
+  "target": "resume-20261116",
+  "go_tests": 49,
+  "race_enabled": true,
+  "database": "real isolated MariaDB",
+  "redis": "real isolated test keys",
+  "failed": 0,
+  "skipped": 0,
+  "elapsed_seconds": 48.457,
+  "privacy_and_staged_files": "passed"
+}
