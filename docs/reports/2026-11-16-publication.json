@@ -1,12 +1,30 @@
 {
   "as_of": "2026-11-16",
-  "target": "resume-20261116",
-  "go_tests": 49,
-  "race_enabled": true,
-  "database": "real isolated MariaDB",
-  "redis": "real isolated test keys",
-  "failed": 0,
-  "skipped": 0,
-  "elapsed_seconds": 48.457,
+  "resume_snapshot": {
+    "as_of": "2026-11-16",
+    "target": "resume-20261116",
+    "go_tests": 49,
+    "race_enabled": true,
+    "database": "real isolated MariaDB",
+    "redis": "real isolated test keys",
+    "failed": 0,
+    "skipped": 0,
+    "elapsed_seconds": 48.457,
+    "privacy_and_staged_files": "passed"
+  },
+  "latest": {
+    "target": "main",
+    "go_tests": 56,
+    "race_enabled": true,
+    "database": "real isolated MariaDB",
+    "failed": 0,
+    "skipped": 0,
+    "elapsed_seconds": 51.525,
+    "added_capabilities": [
+      "Account and key management",
+      "Provider partial updates",
+      "Request filtering, pagination and attempt detail"
+    ]
+  },
   "privacy_and_staged_files": "passed"
 }

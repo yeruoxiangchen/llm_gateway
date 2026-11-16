@@ -172,16 +172,25 @@ bash run.sh stop
 | `GET /v1/usage` | 当前账户额度、已用量、预占、最近 100 条请求 |
 | `GET /v1/requests/{id}` | 当前账户的请求和结算状态 |
 | `POST /admin/accounts` | 创建账户：`name`、`quota_tokens` |
+| `GET /admin/accounts` | 账户列表，支持名称搜索和游标分页 |
+| `GET /admin/accounts/{id}` | 账户详情、已用量、临时占用及可用额度 |
 | `PUT /admin/accounts/{id}/quota` | 调整总额度；额度应覆盖已用和预占 |
 | `POST /admin/accounts/{id}/keys` | 签发 Key：`name`、`requests_per_minute`；明文仅在签发响应返回 |
+| `GET /admin/accounts/{id}/keys` | 账户下的 Key，支持启用状态筛选与分页，隐藏密钥及摘要 |
+| `GET /admin/keys/{id}` | Key 详情，包含启用状态 |
+| `PATCH /admin/keys/{id}` | 修改名称和 RPM，已撤销 Key 保持撤销状态 |
 | `DELETE /admin/keys/{id}` | 吊销 Key |
 | `POST /admin/providers` | 注册上游、别名和单价，字段见下例 |
 | `GET /admin/providers` | 查询渠道，响应隐藏密钥 |
-| `PATCH /admin/providers/{id}` | `{"enabled": false}` 停用渠道 |
-| `GET /admin/requests?account_id=...` | 最近 100 条审计记录 |
+| `GET /admin/providers/{id}` | 渠道详情，隐藏上游凭证 |
+| `PATCH /admin/providers/{id}` | 修改名称、模型映射、地址、优先级、单价、凭证及启用状态 |
+| `GET /admin/requests` | 按账户、Key、渠道、模型、状态和时间筛选，支持游标分页 |
+| `GET /admin/requests/{id}` | 请求详情、用量及各次上游尝试，不返回模型回答缓存 |
 | `GET /admin/usage?group_by=model&account_id=...` | 按 `model/account/provider/day` 汇总用量、请求结果、成本 |
 | `POST /admin/requests/{id}/resolve` | 处理待结算用量，需提供审计理由 |
 | `GET /metrics` | Prometheus 格式指标 |
+
+管理接口的分页规则、修改字段及请求示例见 [管理 API](docs/admin-api.md)。
 
 渠道注册示例 JSON：
 

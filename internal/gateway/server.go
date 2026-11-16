@@ -126,10 +126,11 @@ func NewServer(config Config, store *Store, logger *slog.Logger) *Server {
 	s.mux.Handle("DELETE /admin/keys/{id}", s.admin(http.HandlerFunc(s.revokeKey)))
 	s.mux.Handle("POST /admin/providers", s.admin(http.HandlerFunc(s.createProvider)))
 	s.mux.Handle("GET /admin/providers", s.admin(http.HandlerFunc(s.providers)))
-	s.mux.Handle("PATCH /admin/providers/{id}", s.admin(http.HandlerFunc(s.enableProvider)))
+	s.mux.Handle("PATCH /admin/providers/{id}", s.admin(http.HandlerFunc(s.updateProvider)))
 	s.mux.Handle("GET /admin/requests", s.admin(http.HandlerFunc(s.adminRequests)))
 	s.mux.Handle("GET /admin/usage", s.admin(http.HandlerFunc(s.usageReport)))
 	s.mux.Handle("POST /admin/requests/{id}/resolve", s.admin(http.HandlerFunc(s.resolve)))
+	s.adminRoutes()
 	return s
 }
 
@@ -358,21 +359,6 @@ func (s *Server) providers(w http.ResponseWriter, r *http.Request) {
 	writeJSON(w, 200, map[string]any{"data": providers})
 }
 
-func (s *Server) enableProvider(w http.ResponseWriter, r *http.Request) {
-	var body struct {
-		Enabled *bool `json:"enabled"`
-	}
-	if readJSON(w, r, &body) != nil || body.Enabled == nil {
-		apiError(w, 400, "invalid_provider", "enabled boolean required", "")
-		return
-	}
-	if err := s.Store.EnableProvider(r.Context(), r.PathValue("id"), *body.Enabled); err != nil {
-		s.storeError(w, err)
-		return
-	}
-	writeJSON(w, 200, map[string]bool{"enabled": *body.Enabled})
-}
-
 func (s *Server) models(w http.ResponseWriter, r *http.Request) {
 	providers, err := s.Store.Providers(r.Context(), "")
 	if err != nil {
@@ -418,12 +404,7 @@ func (s *Server) request(w http.ResponseWriter, r *http.Request) {
 }
 
 func (s *Server) adminRequests(w http.ResponseWriter, r *http.Request) {
-	requests, err := s.Store.Requests(r.Context(), r.URL.Query().Get("account_id"))
-	if err != nil {
-		s.storeError(w, err)
-		return
-	}
-	writeJSON(w, 200, map[string]any{"data": requests})
+	s.listAdminRequests(w, r)
 }
 
 func (s *Server) usageReport(w http.ResponseWriter, r *http.Request) {
